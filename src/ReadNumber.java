@@ -1,12 +1,15 @@
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class ReadNumber {
   private static String ChuSo[] = new String[]{"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
   private static String DonVi[] = new String[]{"Hundered", "Billion", "Ten", "Hundred", "Thousand", "Ten", "Hundred", "Million", "Ten"};
 
   public static void main(String[] args) {
-    int so = 900;
+    int so = new Scanner(System.in).nextInt();
     int temp = so;
     String result = "";
 
@@ -18,7 +21,7 @@ public class ReadNumber {
       String CS = ChuSo[numberList.get(j)];
       String DV = DonVi[(count - j) % 9];
 
-      if (CS== "Zero") {
+      if (CS == "Zero") {
         continue;
       }
       else if (CS == "One" && DV == "Ten") {
