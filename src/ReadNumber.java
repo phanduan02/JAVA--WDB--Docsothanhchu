@@ -6,7 +6,7 @@ public class ReadNumber {
   private static String DonVi[] = new String[]{"Hundered", "Billion", "Ten", "Hundred", "Thousand", "Ten", "Hundred", "Million", "Ten"};
 
   public static void main(String[] args) {
-    int so = 1234567890;
+    int so = 900;
     int temp = so;
     String result = "";
 
@@ -18,7 +18,10 @@ public class ReadNumber {
       String CS = ChuSo[numberList.get(j)];
       String DV = DonVi[(count - j) % 9];
 
-      if (CS == "One" && DV == "Ten") {
+      if (CS== "Zero") {
+        continue;
+      }
+      else if (CS == "One" && DV == "Ten") {
         int num = numberList.get(j)*10+numberList.get(j+1);
         j++;
         result += " " + readNumberBetween10and20(num) + " ";
