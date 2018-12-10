@@ -9,23 +9,23 @@ public class ReadNumber {
   private static String DonVi[] = new String[]{"Hundered", "Billion", "Ten", "Hundred", "Thousand", "Ten", "Hundred", "Million", "Ten"};
 
   public static void main(String[] args) {
-    int so = new Scanner(System.in).nextInt();
-    int temp = so;
+    long so = new Scanner(System.in).nextLong();
+    long temp = so;
     String result = "";
 
-    ArrayList<Integer> numberList = getNumberLetter(so);
+    ArrayList<Long> numberList = getNumberLetter(so);
 
     int count = countNumberLetter(numberList);
 
     for (int j = 0; j<numberList.size(); j++) {
-      String CS = ChuSo[numberList.get(j)];
+      String CS = ChuSo[Math.toIntExact(numberList.get(j))];
       String DV = DonVi[(count - j) % 9];
 
       if (CS == "Zero") {
         continue;
       }
       else if (CS == "One" && DV == "Ten") {
-        int num = numberList.get(j)*10+numberList.get(j+1);
+        long num = numberList.get(j)*10+numberList.get(j+1);
         j++;
         result += " " + readNumberBetween10and20(num) + " ";
       }
@@ -58,9 +58,9 @@ public class ReadNumber {
     System.out.println(result);
   }
 
-  private static ArrayList<Integer> getNumberLetter(int num) {
-    ArrayList<Integer> numberList = new ArrayList<Integer>();
-    int temp = num;
+  private static ArrayList<Long> getNumberLetter(long num) {
+    ArrayList<Long> numberList = new ArrayList<Long>();
+    long temp = num;
     while (temp != 0) {
       numberList.add(temp % 10);
       temp /= 10;
@@ -69,13 +69,13 @@ public class ReadNumber {
     return numberList;
   }
 
-  private static int countNumberLetter(ArrayList<Integer> list) {
+  private static int countNumberLetter(ArrayList<Long> list) {
     int size = list.size();
     return size;
   }
 
-  private static String readNumberBetween10and20(int num) {
-    switch (num) {
+  private static String readNumberBetween10and20(long num) {
+    switch ((int) num) {
       case 10:
         return "ten";
       case 11:
